@@ -1,14 +1,13 @@
 package com.dropbox.utils;
 
-import com.dropbox.entity.FileEntity;
+import com.dropbox.vo.FileVO;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class FileUtil {
-    public static FileEntity File2FileEntity(File f){
-        FileEntity ret = new FileEntity();
+    public static FileVO File2FileVO(File f){
+        FileVO ret = new FileVO();
         ret.setDir(f.isDirectory());
         ret.setName(f.getName());
         if(!f.isDirectory())

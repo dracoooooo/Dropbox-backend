@@ -3,16 +3,19 @@ package com.dropbox;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dropbox.entity.User;
 import com.dropbox.mapper.UserMapper;
+
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
-class DropboxApplicationTests {
+public class DropboxApplicationTests {
 
 	@Autowired
 	private UserMapper userMapper;
@@ -47,5 +50,16 @@ class DropboxApplicationTests {
 		wrapper.setEntity(user);
 		List<Object> users = userMapper.selectObjs(wrapper);
 	}
+
+//	@Test
+//	void jwtTest(){
+//		JwtBuilder jwtBuilder = Jwts.builder()
+//				.setId("8888")
+//				.setSubject("User")
+//				.setIssuedAt(new Date())
+//				.signWith(SignatureAlgorithm.HS256, "xxxx");
+//		String token = jwtBuilder.compact();
+//		System.out.println(token);
+//	}
 
 }

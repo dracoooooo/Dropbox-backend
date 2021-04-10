@@ -1,15 +1,17 @@
 package com.dropbox.service;
 
 import com.dropbox.entity.User;
-import com.dropbox.vo.Response;
+import com.dropbox.vo.ResponseVO;
 
 public interface UserService {
 
-    public Response login(User user);
+    public ResponseVO login(User user);
 
-    public Response register(User user);
+    public ResponseVO register(User user);
 
-    public Response logout(User user);
+    public ResponseVO logout(User user);
 
-    public Response check(User user);
+    public ResponseVO check(User user);
+
+    public ResponseVO checkToken();
 }

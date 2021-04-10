@@ -9,9 +9,9 @@ spring:
   servlet:
     multipart:
       max-file-size:
-        1000MB
-      max-request-size:
         10000MB
+      max-request-size:
+        100000MB
 
 server:
   port: 9000

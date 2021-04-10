@@ -1,16 +1,18 @@
 package com.dropbox.service;
 
-import com.dropbox.vo.Response;
+import com.dropbox.vo.ResponseVO;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface FileService {
 
-    public Response upload(MultipartFile[] files);
+    public ResponseVO upload(MultipartFile[] files, String username);
 
-    public Response download();
+    public ResponseEntity<Resource> download(String username, String filePath);
 
-    public Response delete();
+    public ResponseVO delete();
 
-    public Response allFiles(String username);
+    public ResponseVO allFiles(String username);
 
 }
