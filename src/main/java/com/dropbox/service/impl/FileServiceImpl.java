@@ -33,6 +33,13 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public ResponseVO upload(MultipartFile[] files, String username) {
+
+        String userPath = Constants.filePath + File.separator + username;
+        File dir = new File(userPath);
+        if(!dir.exists()){
+            dir.mkdirs();
+        }
+
         if(files == null) return ResponseVO.Failure("upload failed");
         for(MultipartFile file : files) {
             if (!file.isEmpty()) {
@@ -40,7 +47,7 @@ public class FileServiceImpl implements FileService {
 //                Long size = file.getSize();
 //                Date time = new Date();
                 try {
-                    InputStream input = file.getInputStream();
+//                    InputStream input = file.getInputStream();
 
                     String path = Constants.filePath  + File.separator + username + File.separator + name;
 
@@ -90,8 +97,17 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public ResponseVO delete() {
-        return null;
+    public ResponseVO delete(String username, String filePath) {
+        String path = Constants.filePath + File.separator + username + File.separator + filePath;
+        File file = new File(path);
+        try {
+            if (file.delete()) {
+                return ResponseVO.Success("delete success");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResponseVO.Failure("delete failed");
     }
 
     @Override

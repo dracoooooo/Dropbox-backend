@@ -72,5 +72,11 @@ public class WebController {
         return null;
     }
 
-
+    @ResponseBody
+    @PostMapping("file/delete")
+    public ResponseVO delete(HttpServletRequest request,
+                             @RequestParam("filePath") String filePath){
+        String username = (String) request.getAttribute("username");
+        return fileService.delete(username, filePath);
+    }
 }

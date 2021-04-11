@@ -11,7 +11,7 @@ public interface FileService {
 
     public ResponseEntity<Resource> download(String username, String filePath);
 
-    public ResponseVO delete();
+    public ResponseVO delete(String username, String filePath);
 
     public ResponseVO allFiles(String username);
 
