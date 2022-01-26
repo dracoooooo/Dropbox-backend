@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
    @Autowired
-   private HttpSession session;
+   private Constants constants;
 
     public ResponseVO login(User user){
         Map<String, Object> columnMap = new HashMap<String, Object>();
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userMapper.selectByMap(columnMap);
         if (userList.size() == 1){
 //            session.setAttribute("username", user.getUsername());
-            String userPath = Constants.filePath + File.separator + user.getUsername();
+            String userPath = constants.getFilePath() + File.separator + user.getUsername();
             File dir = new File(userPath);
             if(!dir.exists()){
                 dir.mkdirs();
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
         userMapper.insert(user);
 
-        String userPath = Constants.filePath + File.separator + user.getUsername();
+        String userPath = constants.getFilePath() + File.separator + user.getUsername();
         File dir = new File(userPath);
         if(!dir.exists()){
             dir.mkdirs();
@@ -62,11 +62,6 @@ public class UserServiceImpl implements UserService {
         return ResponseVO.Success("register success");
     }
 
-    @Override
-    public ResponseVO logout(User user) {
-        session.removeAttribute("username");
-        return ResponseVO.Success("logout success");
-    }
 
     @Override
     public ResponseVO check(User user) {

@@ -1,11 +1,18 @@
 package com.dropbox.common;
 
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
+@ConfigurationProperties(prefix = "constants")
 public class Constants {
 
-    public static final int UserStorage = 1000;
+    private int UserStorage = 1000;
 
-    public static final int InitialUserUsage = 0;
+    private int InitialUserUsage = 0;
 
-    public static final String filePath = "C:\\Users\\Draco\\IdeaProjects\\Dropbox-backend\\src\\main\\resources\\file";
+    private String filePath = "";
 
 }

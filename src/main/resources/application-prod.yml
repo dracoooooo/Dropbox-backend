@@ -1,0 +1,20 @@
+# DataSource Config
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mysqlDB
+    username: mysqlDB
+    password: TtdhJedbkc3iAXaL
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      max-file-size:
+        10000MB
+      max-request-size:
+        100000MB
+
+server:
+  port: 49000
+
+constants:
+  filePath: "/mnt/dropbox/file"

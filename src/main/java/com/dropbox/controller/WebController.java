@@ -49,7 +49,7 @@ public class WebController {
     @ResponseBody
     @GetMapping("file/download")
     public ResponseEntity<Resource> download(HttpServletRequest request,
-                                             @RequestParam("filePath") String filePath){
+                                             @RequestParam("filePath") String filePath){ // 这里其实是个安全漏洞
         String username = (String) request.getAttribute("username");
         return fileService.download(username, filePath);
     }

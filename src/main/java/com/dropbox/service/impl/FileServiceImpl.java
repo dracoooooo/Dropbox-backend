@@ -25,16 +25,14 @@ import java.util.ArrayList;
 
 @Service
 public class FileServiceImpl implements FileService {
-    @Autowired
-    private HttpSession session;
 
     @Autowired
-    private UserMapper userMapper;
+    private Constants constants;
 
     @Override
     public ResponseVO upload(MultipartFile[] files, String username) {
 
-        String userPath = Constants.filePath + File.separator + username;
+        String userPath = constants.getFilePath() + File.separator + username;
         File dir = new File(userPath);
         if(!dir.exists()){
             dir.mkdirs();
@@ -49,7 +47,7 @@ public class FileServiceImpl implements FileService {
                 try {
 //                    InputStream input = file.getInputStream();
 
-                    String path = Constants.filePath  + File.separator + username + File.separator + name;
+                    String path = constants.getFilePath()  + File.separator + username + File.separator + name;
 
                     file.transferTo(new File(path));
                 } catch (IOException e) {
@@ -65,7 +63,7 @@ public class FileServiceImpl implements FileService {
     @Override
     public ResponseEntity<Resource> download(String username, String filePath) {
 
-        String path = Constants.filePath + File.separator + username + File.separator + filePath;
+        String path = constants.getFilePath() + File.separator + username + File.separator + filePath;
 
         File file = new File(path);
 
@@ -98,7 +96,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public ResponseVO delete(String username, String filePath) {
-        String path = Constants.filePath + File.separator + username + File.separator + filePath;
+        String path = constants.getFilePath() + File.separator + username + File.separator + filePath;
         File file = new File(path);
         try {
             if (file.delete()) {
@@ -112,7 +110,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public ResponseVO allFiles(String username) {
-        String path = Constants.filePath + File.separator + username;
+        String path = constants.getFilePath() + File.separator + username;
         File file = new File(path);
         File[] files = file.listFiles();
         ArrayList<FileVO> ret = new ArrayList<>();

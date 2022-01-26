@@ -1,17 +1,3 @@
-# DataSource Config
 spring:
-  datasource:
-    url: jdbc:mysql://172.26.31.181:33306/mysqlDB
-    username: mysqlDB
-    password: iaRtHpMS6ziy57ZY
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  servlet:
-    multipart:
-      max-file-size:
-        10000MB
-      max-request-size:
-        100000MB
-
-server:
-  port: 9000
+  profiles:
+    active: dev

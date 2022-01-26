@@ -9,8 +9,6 @@ public interface UserService {
 
     public ResponseVO register(User user);
 
-    public ResponseVO logout(User user);
-
     public ResponseVO check(User user);
 
     public ResponseVO checkToken();
